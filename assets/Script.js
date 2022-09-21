@@ -1,12 +1,23 @@
-var APIKey = 38728577514e54c85b8192270269130c
-
-var city = ()
-
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey
+var APIKey = "38728577514e54c85b8192270269130c"
 
 
 
-//NEED A SEARCH BAR
+
+function retrieve(){
+    var city = $("#searchbar").val()
+    console.log(city);
+}
+
+
+// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey
+
+var theDay = moment();
+$ ("#date").text(theDay.format("LLL"))
+
+
+//fetch request... 
+
+
 //NEED A FUNCTION FOR WHEN THE USER INPUTS A CITY IT CALCULATES BACK TO  var city= ()
 //EVENT LISTENER "CLICK" WHEN THRY ENTER THE CITY
 //QUERY PARAMETERS, LOCAL STORAGE 
@@ -19,5 +30,5 @@ var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&ap
 // q: The query parameter, where we'll add the city variable.
 // appid: The application id or key, where we'll add the API key variable.
 
-
+$("#city-bttn").on("click", retrieve)
 
