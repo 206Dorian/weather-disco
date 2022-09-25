@@ -20,44 +20,17 @@ function retrieve(city) {
         .then(function (data) {
             console.log(data)
 
-            //when that button is clicked give me a new element i.e card, etc...with this new element put the info into it
-           
-            //need better path? showing undefined in console log  also how do i get an icon, is it <i> ? 
-            var weather = data.weather.main
-            console.log("weather condition: " + weather)
-            var weatherIcon = data.weather[0].icon
-
-            var iconUrl = `https:openweathermap.org/img/w/$%7BweatherIcon%7D.png`
-
-            var iconImage = $("<img>")
-
-            var temp = data.main.temp
-            console.log("temperature: " + temp)
-
-            var humidity = data.main.humidity
-            console.log("humidity: " + humidity )
-
-            var windspeed = data.wind.speed
-
-            var weatherIcon = data.weather[0].icon
-
-            var iconUrl =`http://openweathermap.org/img/w/${weatherIcon}.png`
-            console.log(iconUrl)
-
-
-            console.log("windspeed: " + windspeed)
-
-            // I think we can delete this now
-            // var uvindex = data.uvindex
-            // console.log("uv index: " + uvindex)
-
+            var lon = data.coord.lon
             var lat = data.coord.lat
-            var lon = data.coord.lon 
 
-            var daycity =$("day1").text(city).addClass("WeatherFuture")
+
+            var daycity = $("day1").text(city).addClass("WeatherFuture")
             //GET info output to the card
 
-            fiveDayForecast(lat,lon)
+            fiveDayForecast(lat, lon)
+            console.log(lat)
+            console.log(lon)
+
         })
 }
 
@@ -70,13 +43,14 @@ function appendHistory(city) {
     console.log(searchHistory)
     $("#history").append(searchHistory)
 
-    
+
+
 
 }
 //API call, got it to work!
-function fiveDayForecast (lat, lon) {
+function fiveDayForecast(lat, lon) {
     var fiveDay = $("<div>").text(fiveDay).
-    addClass("aside")
+        addClass("aside")
     var city = $("#searchbar").val()
 
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`)
@@ -86,12 +60,33 @@ function fiveDayForecast (lat, lon) {
         })
         .then(function (data) {
             console.log(data)
-        })
- 
+
 
             var currentDay = $("<div>").text(city)
             console.log(currentDay)
             $("#currentDay").append(currentDay)
+
+            var temperature = data.list[0].main.temp
+            var humidity = data.list[0].main.humidity
+            var windspeed = data.list[0].wind.speed
+
+            var weatherIcon = data.list[0].weather[0].icon
+            var iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`
+            console.log(iconUrl)
+
+            var currentTemp = $("<p>").append("temperature:", temperature)
+            var currentHumidity = $("<p>").append("Humidity:", humidity)
+            var currentWindspeed = $("<p>").append("Windspeed:", windspeed)
+            var iconImg = $("<img>").attr({ src: iconUrl })
+            console.log(windspeed)
+            console.log(currentWindspeed)
+
+            $("#currentDay").append(currentTemp)
+            $("#currentDay").append(currentHumidity)
+            $("#currentDay").append(currentWindspeed)
+            $("#currentDay").append(iconImg)
+        })
+}
 
 
 //**api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}**
