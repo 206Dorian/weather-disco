@@ -43,10 +43,8 @@ function retrieve(city) {
             var uvindex = data.uvindex
             console.log("uv index: " + uvindex)
 
-
             var lat = data.coord.lat
             var lon = data.coord.lon 
-
 
             var daycity =$("day1").text(city).addClass("WeatherFuture")
             //GET info output to the card
@@ -63,10 +61,15 @@ function appendHistory(city) {
     // searchHistory.on("click", retrieve(city))
 
 }
+//trying to add another div/aside to output 5 day on page
+function fiveDayForecast (lat, lon) {
+    var APIKey2 ="d91f911bcf2c0f925fb6535547a5ddc9"
 
-function fiveDay (lat, lon) {
-    var APIKey2 ="948edc073eedb355fa7de815a8e82bd5"
-    fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`)
+    var fiveDay = $("<div>").text(fiveDay).
+    addClass("aside")
+    
+
+    fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey2}`)
 
         .then(function (response) {
             return response.json();
