@@ -9,7 +9,8 @@ function retrieve(city) {
     console.log(city);
 
     var queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
-    appendHistory(city)
+    appendHistory(city);
+
 
     //fetch request here
     fetch(queryURL)
@@ -60,23 +61,25 @@ function retrieve(city) {
         })
 }
 
+// LOCAL STORAGE, need cities to stay
+//Where does my FOR loop go? 
+//Also how can I get the search button to work with the click of the return button?
+
 function appendHistory(city) {
     var searchHistory = $("<div>").text(city).addClass("card")
     console.log(searchHistory)
-    $("aside").append(searchHistory)
+    $("#history").append(searchHistory)
 
-    // searchHistory.on("click", retrieve(city))
+    
 
 }
-//trying to add another div/aside to output 5 day on page
+//API call, got it to work!
 function fiveDayForecast (lat, lon) {
-    var APIKey2 ="d91f911bcf2c0f925fb6535547a5ddc9"
-
     var fiveDay = $("<div>").text(fiveDay).
     addClass("aside")
     var city = $("#searchbar").val()
 
-    fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey2}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`)
 
         .then(function (response) {
             return response.json();
@@ -86,14 +89,9 @@ function fiveDayForecast (lat, lon) {
         })
  
 
-            var currentDay = $("<div>").text(city).addClass("card")
+            var currentDay = $("<div>").text(city)
             console.log(currentDay)
             $("#currentDay").append(currentDay)
-
-}
-//NEED QUERY PARAMETERS, LOCAL STORAGE 
-
-//  an API call using just the city name or by using a combination of the city name, state code, and country code.
 
 
 //**api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}**
