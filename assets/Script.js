@@ -65,8 +65,8 @@ function appendHistory(city) {
 }
 
 function fiveDay (lat, lon) {
-    var APIKey2 =""
-    fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey2}`)
+    var APIKey2 ="948edc073eedb355fa7de815a8e82bd5"
+    fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`)
 
         .then(function (response) {
             return response.json();
