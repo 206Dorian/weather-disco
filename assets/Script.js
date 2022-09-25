@@ -37,11 +37,18 @@ function retrieve(city) {
             console.log("humidity: " + humidity )
 
             var windspeed = data.wind.speed
+
+            var weatherIcon = data.weather[0].icon
+
+            var iconUrl =`http://openweathermap.org/img/w/${weatherIcon}.png`
+            console.log(iconUrl)
+
+
             console.log("windspeed: " + windspeed)
 
-            //I think I need another function or more info on this. prob a last priority honestly
-            var uvindex = data.uvindex
-            console.log("uv index: " + uvindex)
+            // I think we can delete this now
+            // var uvindex = data.uvindex
+            // console.log("uv index: " + uvindex)
 
             var lat = data.coord.lat
             var lon = data.coord.lon 
@@ -49,14 +56,14 @@ function retrieve(city) {
             var daycity =$("day1").text(city).addClass("WeatherFuture")
             //GET info output to the card
 
-            fiveDay(lat,lon)
+            fiveDayForecast(lat,lon)
         })
 }
 
 function appendHistory(city) {
     var searchHistory = $("<div>").text(city).addClass("card")
     console.log(searchHistory)
-    $("body").append(searchHistory)
+    $("aside").append(searchHistory)
 
     // searchHistory.on("click", retrieve(city))
 
@@ -67,7 +74,7 @@ function fiveDayForecast (lat, lon) {
 
     var fiveDay = $("<div>").text(fiveDay).
     addClass("aside")
-    
+    var city = $("#searchbar").val()
 
     fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey2}`)
 
@@ -77,10 +84,13 @@ function fiveDayForecast (lat, lon) {
         .then(function (data) {
             console.log(data)
         })
+ 
 
-       
+            var currentDay = $("<div>").text(city).addClass("card")
+            console.log(currentDay)
+            $("#currentDay").append(currentDay)
+
 }
-
 //NEED QUERY PARAMETERS, LOCAL STORAGE 
 
 //  an API call using just the city name or by using a combination of the city name, state code, and country code.
