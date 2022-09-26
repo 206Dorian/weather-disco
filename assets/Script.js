@@ -44,8 +44,6 @@ function appendHistory(city) {
     $("#history").append(searchHistory)
 
 
-
-
 }
 //API call, got it to work!
 function fiveDayForecast(lat, lon) {
@@ -61,11 +59,12 @@ function fiveDayForecast(lat, lon) {
         .then(function (data) {
             console.log(data)
 
-
             var currentDay = $("<div>").text(city)
             console.log(currentDay)
             $("#currentDay").append(currentDay)
+            console.log(city)
 
+            
             var temperature = data.list[0].main.temp
             var humidity = data.list[0].main.humidity
             var windspeed = data.list[0].wind.speed
@@ -81,6 +80,8 @@ function fiveDayForecast(lat, lon) {
             console.log(windspeed)
             console.log(currentWindspeed)
 
+            $("#currentDay").empty();
+            $("#currentDay").append(city)
             $("#currentDay").append(currentTemp)
             $("#currentDay").append(currentHumidity)
             $("#currentDay").append(currentWindspeed)
