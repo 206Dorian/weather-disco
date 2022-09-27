@@ -8,7 +8,7 @@ function retrieve(city) {
     var city = $("#searchbar").val()
     console.log(city);
 
-    var queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
     appendHistory(city);
 
 
