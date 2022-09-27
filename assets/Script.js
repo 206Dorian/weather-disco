@@ -20,6 +20,7 @@ function retrieve(city) {
         .then(function (data) {
             console.log(data)
 
+
             var lon = data.coord.lon
             var lat = data.coord.lat
 
@@ -30,7 +31,6 @@ function retrieve(city) {
             fiveDayForecast(lat, lon)
             console.log(lat)
             console.log(lon)
-
         })
 }
 
@@ -56,6 +56,7 @@ function fiveDayForecast(lat, lon) {
         .then(function (response) {
             return response.json();
         })
+
         .then(function (data) {
             console.log(data)
 
@@ -64,18 +65,21 @@ function fiveDayForecast(lat, lon) {
             $("#currentDay").append(currentDay)
             console.log(city)
 
-            
+            // for (let i = 0; i < 5 index++) {
+            //     const element = array[index];
+                
+            // }
+
             var temperature = data.list[0].main.temp
             var humidity = data.list[0].main.humidity
             var windspeed = data.list[0].wind.speed
-
             var weatherIcon = data.list[0].weather[0].icon
             var iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`
             console.log(iconUrl)
 
-            var currentTemp = $("<p>").append("temperature:", temperature)
-            var currentHumidity = $("<p>").append("Humidity:", humidity)
-            var currentWindspeed = $("<p>").append("Windspeed:", windspeed)
+            var currentTemp = $("<p>").append("temperature : ", temperature)
+            var currentHumidity = $("<p>").append("Humidity : ", humidity)
+            var currentWindspeed = $("<p>").append("Windspeed : ", windspeed)
             var iconImg = $("<img>").attr({ src: iconUrl })
             console.log(windspeed)
             console.log(currentWindspeed)
@@ -86,6 +90,35 @@ function fiveDayForecast(lat, lon) {
             $("#currentDay").append(currentHumidity)
             $("#currentDay").append(currentWindspeed)
             $("#currentDay").append(iconImg)
+
+            //copy and pasting above function for the next four day forecast
+
+            var temperature1 = data.list[1].main.temp
+            var humidity1 = data.list[1].main.humidity
+            var windspeed1 = data.list[1].wind.speed
+            var weatherIcon1 = data.list[1].weather[0].icon
+            var iconUrl1 = `http://openweathermap.org/img/w/${weatherIcon1}.png`
+            console.log(iconUrl)
+
+            var currentTemp1 = $("<p>").append("temperature : ", temperature1)
+            var currentHumidity1 = $("<p>").append("Humidity : ", humidity1)
+            var currentWindspeed1 = $("<p>").append("Windspeed : ", windspeed1)
+            var iconImg1 = $("<img>").attr({ src: iconUrl1 })
+            console.log(windspeed)
+            console.log(currentWindspeed)
+
+            $("#daytwo").empty();
+            $("#daytwo").append(city)
+            $("#daytwo").append(currentTemp1)
+            $("#daytwo").append(currentHumidity1)
+            $("#daytwo").append(currentWindspeed1)
+            $("#daytwo").append(iconImg1)
+
+
+
+
+
+
         })
 }
 
