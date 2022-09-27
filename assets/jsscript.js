@@ -90,7 +90,7 @@ function fiveDayForecast(lat, lon) {
             var humidity1 = data.list[1].main.humidity
             var windspeed1 = data.list[1].wind.speed
             var weatherIcon1 = data.list[1].weather[0].icon
-            var iconUrl1 = `http://openweathermap.org/img/w/${weatherIcon1}.png`
+            var iconUrl1 = `https://openweathermap.org/img/w/${weatherIcon1}.png`
             console.log(iconUrl)
 
             var currentTemp1 = $("<p>").append("temperature : ", temperature1)
@@ -111,7 +111,7 @@ function fiveDayForecast(lat, lon) {
             var humidity2 = data.list[2].main.humidity
             var windspeed2 = data.list[2].wind.speed
             var weatherIcon2 = data.list[2].weather[0].icon
-            var iconUrl2 = `http://openweathermap.org/img/w/${weatherIcon2}.png`
+            var iconUrl2 = `https://openweathermap.org/img/w/${weatherIcon2}.png`
             console.log(iconUrl)
 
             var currentTemp2 = $("<p>").append("temperature : ", temperature2)
@@ -133,7 +133,7 @@ function fiveDayForecast(lat, lon) {
             var humidity3 = data.list[3].main.humidity
             var windspeed3 = data.list[3].wind.speed
             var weatherIcon3 = data.list[3].weather[0].icon
-            var iconUrl3 = `http://openweathermap.org/img/w/${weatherIcon3}.png`
+            var iconUrl3 = `https://openweathermap.org/img/w/${weatherIcon3}.png`
             console.log(iconUrl)
 
             var currentTemp3 = $("<p>").append("temperature : ", temperature3)
@@ -156,7 +156,7 @@ function fiveDayForecast(lat, lon) {
             var humidity4 = data.list[4].main.humidity
             var windspeed4 = data.list[4].wind.speed
             var weatherIcon4 = data.list[4].weather[0].icon
-            var iconUrl4 = `http://openweathermap.org/img/w/${weatherIcon4}.png`
+            var iconUrl4 = `https://openweathermap.org/img/w/${weatherIcon4}.png`
             console.log(iconUrl)
 
             var currentTemp4 = $("<p>").append("temperature : ", temperature4)
