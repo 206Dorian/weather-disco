@@ -11,7 +11,6 @@ function retrieve(city) {
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
     appendHistory(city);
 
-
     //fetch request here
     fetch(queryURL)
         .then(function (response) {
@@ -19,7 +18,6 @@ function retrieve(city) {
         })
         .then(function (data) {
             console.log(data)
-
 
             var lon = data.coord.lon
             var lat = data.coord.lat
@@ -70,7 +68,7 @@ function fiveDayForecast(lat, lon) {
             var humidity = data.list[0].main.humidity
             var windspeed = data.list[0].wind.speed
             var weatherIcon = data.list[0].weather[0].icon
-            var iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`
+            var iconUrl = `https://openweathermap.org/img/w/${weatherIcon}.png`
             console.log(iconUrl)
 
             var currentTemp = $("<p>").append("temperature : ", temperature)
