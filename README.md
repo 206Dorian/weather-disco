@@ -6,10 +6,9 @@ As a busy jet setting Influencer I need to know what the weather is in any curre
 I love disco and the globe is round like a dsco ball, hence my name weather disco enjoy fellow beautuful people who dont have problems!
 
 
-<img src="Assets/Scheduler.png"  alt= "screenshot of deployed website">
+<img src="assets/disco.png" alt="screen shot of deploted website"
 
-
-https://206dorian.github.io/robot-scheduler/
+https://206dorian.github.io/weather-disco/
 
 
 Credits
