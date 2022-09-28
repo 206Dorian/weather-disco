@@ -7,6 +7,8 @@ var city;
 function retrieve(city) {
     var city = $("#searchbar").val()
     console.log(city);
+$("#forecast").empty()
+
 
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
     appendHistory(city);
@@ -47,7 +49,7 @@ function fiveDayForecast(lat, lon) {
         addClass("aside")
     var city = $("#searchbar").val()
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${APIKey}`)
 
         .then(function (response) {
             return response.json();
@@ -55,6 +57,8 @@ function fiveDayForecast(lat, lon) {
 
         .then(function (data) {
             console.log(data)
+
+
 
             var currentDay = $("<div>").text(city)
             console.log(currentDay)
@@ -83,93 +87,95 @@ function fiveDayForecast(lat, lon) {
             $("#currentDay").append(currentWindspeed)
             $("#currentDay").append(iconImg)
 
-            //Da one
-            var temperature1 = data.list[1].main.temp
-            var humidity1 = data.list[1].main.humidity
-            var windspeed1 = data.list[1].wind.speed
-            var weatherIcon1 = data.list[1].weather[0].icon
-            var iconUrl1 = `https://openweathermap.org/img/w/${weatherIcon1}.png`
+            for (let index = 0; index < data.list.length; index+=8) {
+            var div = $("<div>")  
+            var temperature = data.list[index].main.temp
+            var humidity = data.list[index].main.humidity
+            var windspeed = data.list[index].wind.speed
+            var weatherIcon = data.list[index].weather[0].icon
+            var iconUrl = `https://openweathermap.org/img/w/${weatherIcon}.png`
             console.log(iconUrl)
 
-            var currentTemp1 = $("<p>").append("temperature : ", temperature1)
-            var currentHumidity1 = $("<p>").append("Humidity : ", humidity1)
-            var currentWindspeed1 = $("<p>").append("Windspeed : ", windspeed1)
-            var iconImg1 = $("<img>").attr({ src: iconUrl1 })
+            var currentTemp = $("<p>").append("temperature : ", temperature)
+            var currentHumidity = $("<p>").append("Humidity : ", humidity)
+            var currentWindspeed = $("<p>").append("Windspeed : ", windspeed)
+            var iconImg = $("<img>").attr({ src: iconUrl})
+        
+            div.append(city)
+            div.append(currentTemp)
+            div.append(currentHumidity)
+            div.append(currentWindspeed)
+            div.append(iconImg)
+            div.addClass("futureday")
+            $("#forecast").append(div)
+            }
+
+            // //Day Two 
+            // var temperature2 = data.list[2].main.temp
+            // var humidity2 = data.list[2].main.humidity
+            // var windspeed2 = data.list[2].wind.speed
+            // var weatherIcon2 = data.list[2].weather[0].icon
+            // var iconUrl2 = `https://openweathermap.org/img/w/${weatherIcon2}.png`
+            // console.log(iconUrl)
+
+            // var currentTemp2 = $("<p>").append("temperature : ", temperature2)
+            // var currentHumidity2 = $("<p>").append("Humidity : ", humidity2)
+            // var currentWindspeed2 = $("<p>").append("Windspeed : ", windspeed2)
+            // var iconImg2 = $("<img>").attr({ src: iconUrl2 })
+            // console.log(windspeed2)
+            // console.log(currentWindspeed2)
+
+            // $("#daythree").empty();
+            // $("#daythree").append(city)
+            // $("#daythree").append(currentTemp2)
+            // $("#daythree").append(currentHumidity2)
+            // $("#daythree").append(currentWindspeed2)
+            // $("#daythree").append(iconImg2)
+
+            // //Day Three 
+            // var temperature3 = data.list[3].main.temp
+            // var humidity3 = data.list[3].main.humidity
+            // var windspeed3 = data.list[3].wind.speed
+            // var weatherIcon3 = data.list[3].weather[0].icon
+            // var iconUrl3 = `https://openweathermap.org/img/w/${weatherIcon3}.png`
+            // console.log(iconUrl)
+
+            // var currentTemp3 = $("<p>").append("temperature : ", temperature3)
+            // var currentHumidity3 = $("<p>").append("Humidity : ", humidity3)
+            // var currentWindspeed3 = $("<p>").append("Windspeed : ", windspeed3)
+            // var iconImg3 = $("<img>").attr({ src: iconUrl3 })
+            // console.log(windspeed3)
+            // console.log(currentWindspeed3)
+
+            // $("#dayfour").empty();
+            // $("#dayfour").append(city)
+            // $("#dayfour").append(currentTemp3)
+            // $("#dayfour").append(currentHumidity3)
+            // $("#dayfour").append(currentWindspeed3)
+            // $("#dayfour").append(iconImg3)
 
 
-            $("#daytwo").empty();
-            $("#daytwo").append(city)
-            $("#daytwo").append(currentTemp1)
-            $("#daytwo").append(currentHumidity1)
-            $("#daytwo").append(currentWindspeed1)
-            $("#daytwo").append(iconImg1)
+            // //Day four 
+            // var temperature4 = data.list[4].main.temp
+            // var humidity4 = data.list[4].main.humidity
+            // var windspeed4 = data.list[4].wind.speed
+            // var weatherIcon4 = data.list[4].weather[0].icon
+            // var iconUrl4 = `https://openweathermap.org/img/w/${weatherIcon4}.png`
+            // console.log(iconUrl)
 
-            //Day Two 
-            var temperature2 = data.list[2].main.temp
-            var humidity2 = data.list[2].main.humidity
-            var windspeed2 = data.list[2].wind.speed
-            var weatherIcon2 = data.list[2].weather[0].icon
-            var iconUrl2 = `https://openweathermap.org/img/w/${weatherIcon2}.png`
-            console.log(iconUrl)
+            // var currentTemp4 = $("<p>").append("temperature : ", temperature4)
+            // var currentHumidity4 = $("<p>").append("Humidity : ", humidity4)
+            // var currentWindspeed4 = $("<p>").append("Windspeed : ", windspeed4)
+            // var iconImg4 = $("<img>").attr({ src: iconUrl4 })
+            // console.log(windspeed4)
+            // console.log(currentWindspeed4)
 
-            var currentTemp2 = $("<p>").append("temperature : ", temperature2)
-            var currentHumidity2 = $("<p>").append("Humidity : ", humidity2)
-            var currentWindspeed2 = $("<p>").append("Windspeed : ", windspeed2)
-            var iconImg2 = $("<img>").attr({ src: iconUrl2 })
-            console.log(windspeed2)
-            console.log(currentWindspeed2)
-
-            $("#daythree").empty();
-            $("#daythree").append(city)
-            $("#daythree").append(currentTemp2)
-            $("#daythree").append(currentHumidity2)
-            $("#daythree").append(currentWindspeed2)
-            $("#daythree").append(iconImg2)
-
-            //Day Three 
-            var temperature3 = data.list[3].main.temp
-            var humidity3 = data.list[3].main.humidity
-            var windspeed3 = data.list[3].wind.speed
-            var weatherIcon3 = data.list[3].weather[0].icon
-            var iconUrl3 = `https://openweathermap.org/img/w/${weatherIcon3}.png`
-            console.log(iconUrl)
-
-            var currentTemp3 = $("<p>").append("temperature : ", temperature3)
-            var currentHumidity3 = $("<p>").append("Humidity : ", humidity3)
-            var currentWindspeed3 = $("<p>").append("Windspeed : ", windspeed3)
-            var iconImg3 = $("<img>").attr({ src: iconUrl3 })
-            console.log(windspeed3)
-            console.log(currentWindspeed3)
-
-            $("#dayfour").empty();
-            $("#dayfour").append(city)
-            $("#dayfour").append(currentTemp3)
-            $("#dayfour").append(currentHumidity3)
-            $("#dayfour").append(currentWindspeed3)
-            $("#dayfour").append(iconImg3)
-
-
-            //Day four 
-            var temperature4 = data.list[4].main.temp
-            var humidity4 = data.list[4].main.humidity
-            var windspeed4 = data.list[4].wind.speed
-            var weatherIcon4 = data.list[4].weather[0].icon
-            var iconUrl4 = `https://openweathermap.org/img/w/${weatherIcon4}.png`
-            console.log(iconUrl)
-
-            var currentTemp4 = $("<p>").append("temperature : ", temperature4)
-            var currentHumidity4 = $("<p>").append("Humidity : ", humidity4)
-            var currentWindspeed4 = $("<p>").append("Windspeed : ", windspeed4)
-            var iconImg4 = $("<img>").attr({ src: iconUrl4 })
-            console.log(windspeed4)
-            console.log(currentWindspeed4)
-
-            $("#dayfive").empty();
-            $("#dayfive").append(city)
-            $("#dayfive").append(currentTemp4)
-            $("#dayfive").append(currentHumidity4)
-            $("#dayfive").append(currentWindspeed4)
-            $("#dayfive").append(iconImg4)
+            // $("#dayfive").empty();
+            // $("#dayfive").append(city)
+            // $("#dayfive").append(currentTemp4)
+            // $("#dayfive").append(currentHumidity4)
+            // $("#dayfive").append(currentWindspeed4)
+            // $("#dayfive").append(iconImg4)
 
         })
 }
