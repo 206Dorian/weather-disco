@@ -2,12 +2,11 @@
 
 Here is a busy jet setting Influencer I need to know what the weather is in any current city in case want to fly off to barcelona for the weekend or do a photoshoot in Los Angeles with my model friends.
 
-I love disco and the globe is round like a dsco ball, hence my name weather disco enjoy fellow beautuful people who dont have problems!
+Also I love disco and the globe is round like a disco ball, hence my name weather disco enjoy fellow beautuful people who dont have problems!
 
 https://206dorian.github.io/weather-disco/
 
 <img src= "assets/disco .png" alt="screen shot of deployed website">
-
 
 Credits
 N/A
