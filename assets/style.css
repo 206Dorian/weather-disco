@@ -4,7 +4,7 @@ background-color: #00DBDE;
 background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
 } */
 body {
-background-color: #52ACFF;
+/* background-color: #52ACFF; */
 background-image: linear-gradient(360deg, #52ACFF 50%, #FFE32C 100%);
 }
 
@@ -27,7 +27,7 @@ color: whitesmoke;
 
 aside{
     background-color: rgb(100, 238, 238);
-    width: 69%;;
+    width: 50%;;
     height: 400px;
     margin: 5px;
     text-align: center;
@@ -37,9 +37,9 @@ aside{
 
 .futureday{
     background-color: rgb(89, 99, 233);
-    width: 23%;
+    width: 19%;
     height: 25%;
-    margin: 10px;
+    margin: 5px;
     text-align: center;
     float: left;
     color: whitesmoke;

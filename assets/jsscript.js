@@ -109,83 +109,31 @@ function fiveDayForecast(lat, lon) {
             div.addClass("futureday")
             $("#forecast").append(div)
             }
-
-            // //Day Two 
-            // var temperature2 = data.list[2].main.temp
-            // var humidity2 = data.list[2].main.humidity
-            // var windspeed2 = data.list[2].wind.speed
-            // var weatherIcon2 = data.list[2].weather[0].icon
-            // var iconUrl2 = `https://openweathermap.org/img/w/${weatherIcon2}.png`
-            // console.log(iconUrl)
-
-            // var currentTemp2 = $("<p>").append("temperature : ", temperature2)
-            // var currentHumidity2 = $("<p>").append("Humidity : ", humidity2)
-            // var currentWindspeed2 = $("<p>").append("Windspeed : ", windspeed2)
-            // var iconImg2 = $("<img>").attr({ src: iconUrl2 })
-            // console.log(windspeed2)
-            // console.log(currentWindspeed2)
-
-            // $("#daythree").empty();
-            // $("#daythree").append(city)
-            // $("#daythree").append(currentTemp2)
-            // $("#daythree").append(currentHumidity2)
-            // $("#daythree").append(currentWindspeed2)
-            // $("#daythree").append(iconImg2)
-
-            // //Day Three 
-            // var temperature3 = data.list[3].main.temp
-            // var humidity3 = data.list[3].main.humidity
-            // var windspeed3 = data.list[3].wind.speed
-            // var weatherIcon3 = data.list[3].weather[0].icon
-            // var iconUrl3 = `https://openweathermap.org/img/w/${weatherIcon3}.png`
-            // console.log(iconUrl)
-
-            // var currentTemp3 = $("<p>").append("temperature : ", temperature3)
-            // var currentHumidity3 = $("<p>").append("Humidity : ", humidity3)
-            // var currentWindspeed3 = $("<p>").append("Windspeed : ", windspeed3)
-            // var iconImg3 = $("<img>").attr({ src: iconUrl3 })
-            // console.log(windspeed3)
-            // console.log(currentWindspeed3)
-
-            // $("#dayfour").empty();
-            // $("#dayfour").append(city)
-            // $("#dayfour").append(currentTemp3)
-            // $("#dayfour").append(currentHumidity3)
-            // $("#dayfour").append(currentWindspeed3)
-            // $("#dayfour").append(iconImg3)
-
-
-            // //Day four 
-            // var temperature4 = data.list[4].main.temp
-            // var humidity4 = data.list[4].main.humidity
-            // var windspeed4 = data.list[4].wind.speed
-            // var weatherIcon4 = data.list[4].weather[0].icon
-            // var iconUrl4 = `https://openweathermap.org/img/w/${weatherIcon4}.png`
-            // console.log(iconUrl)
-
-            // var currentTemp4 = $("<p>").append("temperature : ", temperature4)
-            // var currentHumidity4 = $("<p>").append("Humidity : ", humidity4)
-            // var currentWindspeed4 = $("<p>").append("Windspeed : ", windspeed4)
-            // var iconImg4 = $("<img>").attr({ src: iconUrl4 })
-            // console.log(windspeed4)
-            // console.log(currentWindspeed4)
-
-            // $("#dayfive").empty();
-            // $("#dayfive").append(city)
-            // $("#dayfive").append(currentTemp4)
-            // $("#dayfive").append(currentHumidity4)
-            // $("#dayfive").append(currentWindspeed4)
-            // $("#dayfive").append(iconImg4)
-
+        
         })
 }
 
-
-//**api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}**
-// **This section lists a number of parameters, but only the following two are required:
-// q: The query parameter, where we'll add the city variable.
-// appid: The application id or key, where we'll add the API key variable.
-
 $("#city-bttn").on("click", retrieve)
 //runs the retrieve function
+
+
+
+
+    
+
+
+
+// //local Storage attempt, take 1 haha
+// const rememberCity = (result) => {
+//     const idValue = "city-bttn"
+// localStorage.setItem(idValue)
+
+// }
+
+// //getting item from localstorage, persisting upon reload
+// $("#0").val(localStorage.getItem("0"));
+// $("#1").val(localStorage.getItem("1"));
+// $("#2").val(localStorage.getItem("2"));
+// $("#3").val(localStorage.getItem("3"));
+// $("#4").val(localStorage.getItem("4"));
 
