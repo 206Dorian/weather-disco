@@ -33,9 +33,6 @@ $("#forecast").empty()
         })
 }
 
-// LOCAL STORAGE, need cities to stay
-//Also how can I get the search button to work with the click of the return button?
-
 function appendHistory(city) {
     var searchHistory = $("<div>").text(city).addClass("card")
     console.log(searchHistory)
@@ -119,11 +116,8 @@ $("#city-bttn").on("click", retrieve)
 
 
 
-    
 
-
-
-// //local Storage attempt, take 1 haha
+// LOCAL STORAGE attempt, take 2
 // const rememberCity = (result) => {
 //     const idValue = "city-bttn"
 // localStorage.setItem(idValue)

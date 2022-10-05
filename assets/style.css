@@ -27,11 +27,12 @@ color: whitesmoke;
 
 aside{
     background-color: rgb(100, 238, 238);
-    width: 50%;;
+    width: 30%;;
     height: 400px;
     margin: 5px;
     text-align: center;
     float: center; 
+font-size: 40px;
 }
 
 
