@@ -38,7 +38,6 @@ function appendHistory(city) {
     console.log(searchHistory)
     $("#history").append(searchHistory)
 
-
 }
 //API call, got it to work!
 function fiveDayForecast(lat, lon) {
@@ -55,8 +54,7 @@ function fiveDayForecast(lat, lon) {
         .then(function (data) {
             console.log(data)
 
-
-
+            
             var currentDay = $("<div>").text(city)
             console.log(currentDay)
             $("#currentDay").append(currentDay)
