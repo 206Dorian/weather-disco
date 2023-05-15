@@ -1,22 +1,24 @@
 :root {
     --sunsetRed: #d5978e;
     --deepBlue: #003c53;
-    --deepPurple: #242038;
+    --deepCurrent: #006D77;
     --greenBlue: #2364aa;
     --liteBlue: #3da5d9;
     --litePink: #eee5e9;
     --verdigris: #6fbbe4;
     --sunrise: #e87a51;
-    
+
 }
 
 
-html, body {
-   
+html,
+body {
+
     min-height: 100vh;
-display: grid;
-place-content: center;
-background: #73bfb8;
+    display: grid;
+    place-content: center;
+    background: var(--verdigris);
+
 }
 
 h1 {
@@ -26,38 +28,39 @@ h1 {
 /* Styling for the cities entered */
 .card {
     background-color: var(--greenBlue);
-position: relative;
-
-    width: 80vh;
-    height: 60vh;
-    margin: 10vh;
-    text-align: center;
-    float: left;
-    color: whitesmoke;
+    position: relative;
+    width: 90%;
+    height: 20%;
+    margin: 10%;
+    text-align: left;
+    color: var(--litePink);
     border-radius: 0.5rem;
-}
+    clear: both; /* Add this property to clear the float */
+  }
 
 /* Styling for the current city/current day entered */
 
 aside {
     background-color: var(--deepBlue);
-color: var(--litePink);
-    width: 30%;
-    ;
+    color: var(--litePink);
+    width: calc(70% - 30px); /* Adjust the width to make space for margins */
     height: 400px;
     margin: 15px;
     text-align: center;
-    float: center;
     font-size: 40px;
+    border-radius: 10px;
+    border-color: var(--litePink);
+    float: none; /* Remove the float property */
+    display: inline-block; /* Add this property to align the element next to .card */
 }
 
 .futureday {
     background-color: var(--sunsetRed);
-    width: 19%;
-    height: 50%;
-    margin: 5px;
+    width: 18%;
+    height: 92%;
+    margin: 1%;
     text-align: center;
     float: center;
-    color: whitesmoke;
+    color: var(--litePink);
     font-size: 20px;
 }
