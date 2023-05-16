@@ -7,7 +7,7 @@
     --litePink: #eee5e9;
     --sunsetRed: #d5978e;
     --sunrise: #e87a51;
-    --yellow: #f5e56f;
+    --badBitch: #bc0d6d;
 
 
 }
@@ -60,7 +60,7 @@ aside {
     /* Add border property */
     box-sizing: border-box;
     display: inline-block;
-    box-shadow: 0 0 50px var(--yellow);
+    box-shadow: 0 0 70px var(--litePink);
     /* Add box-shadow property */
     animation: glow 3s ease-in-out infinite;
     /* Add animation property */
