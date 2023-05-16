@@ -1,11 +1,11 @@
 :root {
-    --sunsetRed: #d5978e;
     --deepBlue: #003c53;
     --deepCurrent: #006D77;
     --greenBlue: #2364aa;
     --liteBlue: #3da5d9;
-    --litePink: #eee5e9;
     --verdigris: #6fbbe4;
+    --litePink: #eee5e9;
+    --sunsetRed: #d5978e;
     --sunrise: #e87a51;
     --yellow: #f5e56f;
 
@@ -37,27 +37,33 @@ h1 {
     text-align: center;
     color: var(--litePink);
     border-radius: 0.5rem;
-    clear: both; /* Add this property to clear the float */
-    border: 5px solid var(--litePink); /* Add border property */
+    clear: both;
+    /* Add this property to clear the float */
+    border: 5px solid var(--litePink);
+    /* Add border property */
     font-size: 25px;
-  }
+}
 
 /* Styling for the current city/current day entered */
 
 aside {
     background-color: var(--deepBlue);
     color: var(--litePink);
-    width: calc(80% - 30px); /* Adjust the width to make space for margins */
+    width: calc(80% - 30px);
+    /* Adjust the width to make space for margins */
     height: 450px;
     margin: 3%;
     text-align: center;
     font-size: 40px;
     border-radius: 10px;
-    border: 6px solid var(--litePink); /* Add border property */
+    border: 6px solid var(--litePink);
+    /* Add border property */
     box-sizing: border-box;
     display: inline-block;
-    box-shadow: 0 0 50px var(--litePink); /* Add box-shadow property */
-    animation: glow 3s ease-in-out infinite; /* Add animation property */
+    box-shadow: 0 0 50px var(--yellow);
+    /* Add box-shadow property */
+    animation: glow 3s ease-in-out infinite;
+    /* Add animation property */
 }
 
 
@@ -70,5 +76,6 @@ aside {
     float: center;
     color: var(--litePink);
     font-size: 20px;
-    border: 5px solid var(--litePink); /* Add border property */
+    border: 5px solid var(--litePink);
+    /* Add border property */
 }

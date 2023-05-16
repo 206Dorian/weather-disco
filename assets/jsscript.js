@@ -2,12 +2,13 @@ var APIKey = "38728577514e54c85b8192270269130c"
 
 var theDay = moment();
 $("#date").text(theDay.format("LLL"))
-var city;
 
 function retrieve(city) {
     var city = $("#searchbar").val()
     console.log(city);
 $("#forecast").empty()
+$("#searchbar").val("");
+
 
 
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
@@ -108,24 +109,21 @@ function fiveDayForecast(lat, lon) {
         })
 }
 
-$("#city-bttn").on("click", retrieve)
+
+$("#city-bttn").on("click", function() {
+    var city = $("#searchbar").val();
+    retrieve(city);
+    $("#searchbar").val(""); // Clear the search bar
+  });
+
+  $("#searchbar").on("keydown", function (event) {
+    if (event.key === "Enter") {
+      var city = $("#searchbar").val();
+      retrieve(city);
+      $("#searchbar").val(""); // Clear the search bar
+    }
+  });
+
+// $("#city-bttn").on("click", retrieve)
 //runs the retrieve function
-
-
-
-
-
-// LOCAL STORAGE attempt, take 2
-// const rememberCity = (result) => {
-//     const idValue = "city-bttn"
-// localStorage.setItem(idValue)
-
-// }
-
-// //getting item from localstorage, persisting upon reload
-// $("#0").val(localStorage.getItem("0"));
-// $("#1").val(localStorage.getItem("1"));
-// $("#2").val(localStorage.getItem("2"));
-// $("#3").val(localStorage.getItem("3"));
-// $("#4").val(localStorage.getItem("4"));
 
