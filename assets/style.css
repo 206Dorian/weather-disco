@@ -24,11 +24,13 @@ body {
 }
 
 h1 {
-    color: var(--sunrise);
+    color: var(--greenBlue);
+    position:relative;
 }
 
 /* Styling for the cities entered */
 .card {
+    
     background-color: var(--greenBlue);
     position: relative;
     width: 90%;
@@ -40,15 +42,22 @@ h1 {
     clear: both;
     /* Add this property to clear the float */
     border: 5px solid var(--litePink);
+    border-radius: inherit;
     /* Add border property */
     font-size: 25px;
+    inset: 0;
 }
 
-/* Styling for the current city/current day entered */
 
 aside {
-    background-color: var(--deepBlue);
-    color: var(--litePink);
+    /* filter:blur(3.5rem); */
+    /* content: ""; */
+    background: linear-gradient(
+        0deg, 
+        var(--badBitch),
+        var(--sunrise),
+        var(--sunsetRed)
+    );
     width: calc(80% - 30px);
     /* Adjust the width to make space for margins */
     height: 450px;
