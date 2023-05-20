@@ -4,59 +4,52 @@ var theDay = moment();
 $("#date").text(theDay.format("LLL"))
 
 function retrieve(city) {
-    var city = $("#searchbar").val()
+    city = city || $("#searchbar").val(); // Use the provided city name or get the value from the search bar
     console.log(city);
     $("#forecast").empty()
-    $("#searchbar").val("");
 
-    // Save to local storage
-    var history = JSON.parse(localStorage.getItem('history')) || [];
-    history.push(city);
-    localStorage.setItem('history', JSON.stringify(history));
+    // Only save to local storage if the city was retrieved from the search bar
+    if (!city) {
+        var history = JSON.parse(localStorage.getItem('history')) || [];
+        history.push(city);
+        localStorage.setItem('history', JSON.stringify(history));
+    }
 
-    // Your existing code continues...
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
+    appendHistory(city);
+
+    //fetch request here
+    // ...
 }
 
+function appendHistory(city) {
+    var history = JSON.parse(localStorage.getItem('history')) || [];
+    history.forEach(function(city) {
+        var searchHistory = $("<div>").text(city).addClass("card")
+        console.log(searchHistory)
 
-
-
-var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
-appendHistory(city);
-
-//fetch request here
-fetch(queryURL)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data)
-
-        var lon = data.coord.lon
-        var lat = data.coord.lat
-
-        var daycity = $("day1").text(city).addClass("WeatherFuture")
-        //GET info output to the card
-
-        fiveDayForecast(lat, lon)
-        console.log(lat)
-        console.log(lon)
-    })
-
-
-    function appendHistory(city) {
-        var history = JSON.parse(localStorage.getItem('history')) || [];
-        history.forEach(function(city) {
-            var searchHistory = $("<div>").text(city).addClass("card")
-            console.log(searchHistory)
-            $("#history").append(searchHistory)
+        // Add a click event to the searchHistory element to retrieve the city's information
+        searchHistory.on("click", function() {
+            retrieve(city);
         });
-    }
+
+        $("#history").append(searchHistory)
+    });
+}
+
+if (!history.includes(city)) {
+    history.push(city);
+    localStorage.setItem('history', JSON.stringify(history));
+}
+
+//...
+
     
 //API call, got it to work!
 function fiveDayForecast(lat, lon, city) {
     var fiveDay = $("<div>").text(fiveDay).
         addClass("aside")
-    var city = $("#searchbar").val()
+    // var city = $("#searchbar").val()
 
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${APIKey}`)
 
