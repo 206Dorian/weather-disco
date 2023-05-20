@@ -3,8 +3,8 @@ var APIKey = "38728577514e54c85b8192270269130c"
 var theDay = moment();
 $("#date").text(theDay.format("LLL"))
 
-function retrieve(city, fromInput =false) {
-    city = city || $("#searchbar").val(); // Use the provided city name or get the value from the search bar
+function retrieve(city, fromInput = false) {
+    city = city || $("#searchbar").val();
     console.log(city);
     $("#forecast").empty()
 
@@ -14,25 +14,47 @@ function retrieve(city, fromInput =false) {
         if (!history.includes(city)) {
             history.push(city);
             localStorage.setItem('history', JSON.stringify(history));
+        }
     }
 
-    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
-    appendHistory(city);
 
-    //fetch request here
-    // ...
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
+    
+   
+    fetch(queryURL)
+    .then(function(response) {
+        if (!response.ok) {
+            throw new Error('HTTP error, status = ' + response.status);
+        }
+        return response.json();
+    })
+    .then(function(data) {
+        // The response data (weather info) is inside this block
+        console.log(data);
+        
+        // You can pass the latitude and longitude to the fiveDayForecast function here
+        var lat = data.coord.lat;
+        var lon = data.coord.lon;
+        fiveDayForecast(lat, lon, city);
+    })
+    .catch(function(error) {
+        console.log('An error occurred: ', error);
+    });
+
+    appendHistory();
+    
 }
 
 function appendHistory() {
     var history = JSON.parse(localStorage.getItem('history')) || [];
     $("#history").empty() // Clear the history section
 
-    history.forEach(function(city) {
+    history.forEach(function (city) {
         var searchHistory = $("<div>").text(city).addClass("card")
         console.log(searchHistory)
 
         // Add a click event to the searchHistory element to retrieve the city's information
-        searchHistory.on("click", function() {
+        searchHistory.on("click", function () {
             retrieve(city);
         });
 
@@ -40,15 +62,11 @@ function appendHistory() {
     });
 }
 
+// if (!history.includes(city)) {
+//     history.push(city);
+//     localStorage.setItem('history', JSON.stringify(history));
+// }
 
-if (!history.includes(city)) {
-    history.push(city);
-    localStorage.setItem('history', JSON.stringify(history));
-}
-
-//...
-
-    
 //API call, got it to work!
 function fiveDayForecast(lat, lon, city) {
     var fiveDay = $("<div>").text(fiveDay).
@@ -135,6 +153,6 @@ $("#searchbar").on("keydown", function (event) {
 
 
 
-// $("#city-bttn").on("click", retrieve)
-//runs the retrieve function
-
+$(document).ready(function() {
+    appendHistory();
+});
