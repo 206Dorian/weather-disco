@@ -3,16 +3,17 @@ var APIKey = "38728577514e54c85b8192270269130c"
 var theDay = moment();
 $("#date").text(theDay.format("LLL"))
 
-function retrieve(city) {
+function retrieve(city, fromInput =false) {
     city = city || $("#searchbar").val(); // Use the provided city name or get the value from the search bar
     console.log(city);
     $("#forecast").empty()
 
     // Only save to local storage if the city was retrieved from the search bar
-    if (!city) {
+    if (fromInput) {
         var history = JSON.parse(localStorage.getItem('history')) || [];
-        history.push(city);
-        localStorage.setItem('history', JSON.stringify(history));
+        if (!history.includes(city)) {
+            history.push(city);
+            localStorage.setItem('history', JSON.stringify(history));
     }
 
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`
@@ -22,8 +23,10 @@ function retrieve(city) {
     // ...
 }
 
-function appendHistory(city) {
+function appendHistory() {
     var history = JSON.parse(localStorage.getItem('history')) || [];
+    $("#history").empty() // Clear the history section
+
     history.forEach(function(city) {
         var searchHistory = $("<div>").text(city).addClass("card")
         console.log(searchHistory)
@@ -36,6 +39,7 @@ function appendHistory(city) {
         $("#history").append(searchHistory)
     });
 }
+
 
 if (!history.includes(city)) {
     history.push(city);
@@ -117,21 +121,18 @@ function fiveDayForecast(lat, lon, city) {
 
 $("#city-bttn").on("click", function () {
     var city = $("#searchbar").val();
-    retrieve(city);
+    retrieve(city, true);
     $("#searchbar").val(""); // Clear the search bar
 });
 
 $("#searchbar").on("keydown", function (event) {
     if (event.key === "Enter") {
         var city = $("#searchbar").val();
-        retrieve(city);
+        retrieve(city, true);
         $("#searchbar").val(""); // Clear the search bar
     }
 });
 
-$(document).ready(function() {
-    appendHistory();
-});
 
 
 // $("#city-bttn").on("click", retrieve)
